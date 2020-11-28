@@ -17,6 +17,7 @@
 
     <modules>
         <module>web-shop-cloud-security-and-logging</module>
+        <module>web-shop-cloud-domain</module>
     </modules>
 
     
