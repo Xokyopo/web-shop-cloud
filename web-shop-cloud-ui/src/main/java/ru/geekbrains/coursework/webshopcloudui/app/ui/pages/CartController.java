@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.SessionScope;
-import ru.geekbrains.coursework.webshop.app.domain.ProductService;
-import ru.geekbrains.coursework.webshop.app.domain.SaleService;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Product;
-import ru.geekbrains.coursework.webshop.app.external.pages.represantations.CartStatus;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.ASaleService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopcloudui.app.ui.pages.represantations.CartStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/cart")
 @SessionScope
 public class CartController {
-    private ProductService productService;
-    private SaleService saleService;
+    private AService<Product> productService;
+    private ASaleService saleService;
     private HashMap<Product, Integer> cart;
     private long fullPrice;
     private long productCount;
 
     @Autowired
-    public CartController(ProductService productService, SaleService saleService) {
+    public CartController(AService<Product> productService, ASaleService saleService) {
         this.saleService = saleService;
         this.cart = new HashMap<>();
         this.productService = productService;

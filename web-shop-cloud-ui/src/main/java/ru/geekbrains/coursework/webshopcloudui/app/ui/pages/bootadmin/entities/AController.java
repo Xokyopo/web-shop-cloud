@@ -5,20 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.geekbrains.coursework.webshop.app.dao.ARepository;
-import ru.geekbrains.coursework.webshop.app.domain.AService;
-import ru.geekbrains.coursework.webshop.app.external.exceptions.EntityNotFoundException;
-import ru.geekbrains.coursework.webshop.app.utils.ProgramUtils;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
 
-public abstract class AController<E, R extends AService<E, ? extends ARepository<E>>> {
+import javax.persistence.EntityNotFoundException;
+
+public abstract class AController<E, S extends AService<E>> {
     private String entityName;
     private String rootPath;
     private String entitiesTablePath;
     private String editFormPath;
-    private R service;
+    private S service;
 
     @Autowired
-    public void init(R service) {
+    public void init(S service) {
         rootPath = ProgramUtils.getRequestMappingValue(this).stream()
                 .map(ProgramUtils::removeSlashOnStartAndEnd)
                 .findFirst()
@@ -53,7 +52,7 @@ public abstract class AController<E, R extends AService<E, ? extends ARepository
         return "redirect:/" + this.rootPath + "/showAll";
     }
 
-    public R getService() {
+    public S getService() {
         return service;
     }
 

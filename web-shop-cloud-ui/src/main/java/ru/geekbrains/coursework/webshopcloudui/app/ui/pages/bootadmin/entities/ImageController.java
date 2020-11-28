@@ -6,13 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshop.app.domain.ImageService;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Image;
-import ru.geekbrains.coursework.webshop.app.utils.ProgramUtils;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.ImageService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Image;
 
 import java.util.List;
 import java.util.Optional;
-
+//TODO delete Program utils
 @Controller
 @RequestMapping("/admin/entities/image")
 public class ImageController extends AController<Image, ImageService> {

@@ -5,16 +5,11 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
-@Entity(name = "sales")
 public class Sale {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long dateTime;
     private long count;
     private long price;
-    @Column(length = 5000, name = "products_as_json")
-    @Basic(fetch = FetchType.LAZY)
     private String productsAsJSON;
 
     public Sale() {

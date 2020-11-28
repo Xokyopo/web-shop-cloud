@@ -1,22 +1,16 @@
 package ru.geekbrains.coursework.webshopcloudui.app.domain.entities;
 
-import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshop.app.dao.HDDRepository;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Arrays;
 import java.util.UUID;
 
-@Entity(name = "images")
 public class Image extends AEntity {
     private String type;
     private String path;
     private long size;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    @Column(columnDefinition = "BLOB")
     private byte[] data;
 
     public Image() {
@@ -62,7 +56,6 @@ public class Image extends AEntity {
         //todo data byte limit is (2^16 = 65 536)
         try {
             if (this.data != null && !Arrays.equals(this.data, multipartFile.getBytes())) {
-                this.deleteFileBeforeRemove();
             }
 
             this.setName(multipartFile.getOriginalFilename());
@@ -84,28 +77,5 @@ public class Image extends AEntity {
                 ", size = " + size +
                 ", data.length = " + (data == null ? "0" : data.length) +
                 "} " + super.toString();
-    }
-
-    @PrePersist
-    @PreUpdate
-    public void saveBigFileData() {
-        if (StringUtils.isNotBlank(this.path)) {
-            HDDRepository.getInstance().saveToFile(this.path, this.data);
-            this.data = null;
-        }
-    }
-
-    @PreRemove
-    public void deleteFileBeforeRemove() {
-        if (StringUtils.isNotBlank(this.path)) {
-            HDDRepository.getInstance().delete(this.path);
-        }
-    }
-
-    @PostLoad
-    public void loadBigFileData() {
-        if (StringUtils.isNotBlank(this.path)) {
-            this.data = HDDRepository.getInstance().loadFromFile(this.path);
-        }
     }
 }

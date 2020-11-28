@@ -6,17 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.coursework.webshop.app.domain.RoleService;
-import ru.geekbrains.coursework.webshop.app.domain.UserService;
-import ru.geekbrains.coursework.webshop.app.domain.entities.User;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Role;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.User;
 
 @Controller
 @RequestMapping("/admin/entities/user")
-public class UserController extends AController<User, UserService> {
-    private RoleService roleService;
+public class UserController extends AController<User, AService<User>> {
+    private AService<Role> roleService;
 
     @Autowired
-    public UserController(RoleService roleService) {
+    public UserController(AService<Role> roleService) {
         this.roleService = roleService;
     }
 

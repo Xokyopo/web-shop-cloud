@@ -1,78 +1,22 @@
 package ru.geekbrains.coursework.webshopcloudui.app.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ResolvableType;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import ru.geekbrains.coursework.webshop.app.dao.ARepository;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AService<E, R extends ARepository<E>> {
-    private Class<E> entitiesClass;
-    private R repository;
+public interface AService<E> {
 
-    @Autowired
-    public void init(R repository) {
-        this.repository = repository;
-        this.entitiesClass = this.getEntitiesClassBy(repository);
-    }
+    List<E> getAll();
 
-    public List<E> getAll() {
-        return this.repository.findAll();
-    }
+    String getEntityName();
 
-    public Page<E> getAll(Pageable pageable) {
-        this.requireNotNull(pageable, "pageable cant be NULL");
+    Optional<E> getById(Long id);
 
-        return this.repository.findAll(pageable);
-    }
+    void delete(Long id);
 
-    public Optional<E> getById(Long id) {
-        this.requireNotNull(id, "EntityID Cant be NULL");
+    void save(E entity);
 
-        return (id == 0) ? Optional.of(this.getEmptyEntity()) : this.repository.findById(id);
-    }
-
-    public void save(E entity) {
-        this.requireNotNull(entity, "Entity Cant be NULL");
-
-        this.repository.save(entity);
-    }
-
-    public void delete(Long id) {
-        this.requireNotNull(id, "Entity Cant be NULL");
-
-        this.repository.deleteById(id);
-    }
-
-    public R getRepository() {
-        return repository;
-    }
-
-    public String getEntityName() {
-        return this.entitiesClass.getSimpleName();
-    }
-
-    protected void requireNotNull(Object object, String message) {
-        if (object == null) {
-            throw new IllegalArgumentException(message);
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    private Class<E> getEntitiesClassBy(R repository) {
-        ResolvableType resolvableType = ResolvableType.forClass(repository.getClass()).as(JpaRepository.class);
-        return (Class<E>) resolvableType.getGeneric(0).toClass();
-    }
-
-    protected final E getEmptyEntity() {
-        try {
-            return this.entitiesClass.newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+    Page<E> getAll(PageRequest of);
 }

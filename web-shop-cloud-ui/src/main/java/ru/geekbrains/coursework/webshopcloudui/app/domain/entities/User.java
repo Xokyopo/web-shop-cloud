@@ -1,13 +1,9 @@
 package ru.geekbrains.coursework.webshopcloudui.app.domain.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import java.util.Set;
 
-@Entity(name = "users")
 public class User extends AEntity {
     private String password;
-    @ManyToMany
     private Set<Role> roles;
 
     public String getPassword() {

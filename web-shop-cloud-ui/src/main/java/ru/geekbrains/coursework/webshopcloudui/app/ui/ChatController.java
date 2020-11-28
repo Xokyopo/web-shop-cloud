@@ -4,7 +4,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
-import ru.geekbrains.coursework.webshop.app.domain.entities.ChatMessage;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.ChatMessage;
 
 @Controller
 public class ChatController {
