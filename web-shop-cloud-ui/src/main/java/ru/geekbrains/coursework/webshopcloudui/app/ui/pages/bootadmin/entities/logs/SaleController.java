@@ -5,15 +5,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.coursework.webshop.app.domain.SaleService;
-import ru.geekbrains.coursework.webshop.app.external.exceptions.EntityNotFoundException;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.ASaleService;
+
+import javax.persistence.EntityNotFoundException;
 
 @Controller
 @RequestMapping("/admin/entities/logs/sale")
 public class SaleController {
-    private SaleService saleService;
+    private ASaleService saleService;
 
-    public SaleController(SaleService saleService) {
+    public SaleController(ASaleService saleService) {
         this.saleService = saleService;
     }
 
