@@ -1,8 +1,7 @@
 package ru.geekbrains.coursework.webshopclouddomain.app.domain.entities;
 
-import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshop.app.dao.HDDRepository;
+import ru.geekbrains.coursework.webshopclouddomain.app.dao.HDDRepository;
 
 import javax.persistence.*;
 import java.io.IOException;
@@ -90,7 +89,7 @@ public class Image extends AEntity {
     @PrePersist
     @PreUpdate
     public void saveBigFileData() {
-        if (StringUtils.isNotBlank(this.path)) {
+        if (!this.path.isBlank()) {
             HDDRepository.getInstance().saveToFile(this.path, this.data);
             this.data = null;
         }
@@ -98,14 +97,14 @@ public class Image extends AEntity {
 
     @PreRemove
     public void deleteFileBeforeRemove() {
-        if (StringUtils.isNotBlank(this.path)) {
+        if (!this.path.isBlank()) {
             HDDRepository.getInstance().delete(this.path);
         }
     }
 
     @PostLoad
     public void loadBigFileData() {
-        if (StringUtils.isNotBlank(this.path)) {
+        if (!this.path.isBlank()) {
             this.data = HDDRepository.getInstance().loadFromFile(this.path);
         }
     }

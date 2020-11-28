@@ -4,7 +4,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @MappedSuperclass
@@ -12,7 +11,6 @@ public abstract class AEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotNull
     private String name;
 
     public long getId() {

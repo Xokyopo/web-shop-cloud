@@ -5,7 +5,7 @@ import org.springframework.core.ResolvableType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.geekbrains.coursework.webshop.app.dao.ARepository;
+import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
 
 import java.util.List;
 import java.util.Optional;

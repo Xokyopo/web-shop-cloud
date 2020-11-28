@@ -2,8 +2,8 @@ package ru.geekbrains.coursework.webshopclouddomain.app.domain;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshop.app.dao.ImageRepository;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Image;
+import ru.geekbrains.coursework.webshopclouddomain.app.dao.ImageRepository;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.entities.Image;
 
 import java.util.List;
 import java.util.stream.Collectors;

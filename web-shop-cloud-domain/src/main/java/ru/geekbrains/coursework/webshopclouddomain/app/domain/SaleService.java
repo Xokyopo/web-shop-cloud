@@ -3,9 +3,9 @@ package ru.geekbrains.coursework.webshopclouddomain.app.domain;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.coursework.webshop.app.dao.SaleRepository;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Product;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Sale;
+import ru.geekbrains.coursework.webshopclouddomain.app.dao.SaleRepository;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.entities.Sale;
 
 import java.util.List;
 import java.util.Map;

@@ -29,19 +29,17 @@ public class HDDRepository {
             try {
                 Files.createDirectories(rootDir);
             } catch (IOException e) {
-                //TODO add logger
                 throw new UncheckedIOException(e);
             }
         }
         HDD_REPOSITORY = this;
     }
 
-    //TODO add Nio ByteBuffer?
+    //may be add Nio ByteBuffer?
     public void saveToFile(String name, byte[] arr) {
         try {
             Files.write(getFullFileName(name), arr, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
         } catch (IOException e) {
-            //TODO add logger
             throw new UncheckedIOException(e);
         }
     }
@@ -50,7 +48,6 @@ public class HDDRepository {
         try {
             return Files.readAllBytes(getFullFileName(name));
         } catch (IOException e) {
-            //TODO add logger
             throw new UncheckedIOException(e);
         }
     }
@@ -59,7 +56,6 @@ public class HDDRepository {
         try {
             Files.deleteIfExists(getFullFileName(name));
         } catch (IOException e) {
-            //TODO add logger
             throw new UncheckedIOException(e);
         }
     }

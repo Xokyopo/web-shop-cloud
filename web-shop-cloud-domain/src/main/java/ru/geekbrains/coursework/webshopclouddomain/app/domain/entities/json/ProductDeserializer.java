@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Brand;
-import ru.geekbrains.coursework.webshop.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.entities.Brand;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.entities.Product;
 
 import java.io.IOException;
 import java.util.Set;
