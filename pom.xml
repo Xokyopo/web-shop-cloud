@@ -16,6 +16,7 @@
     </properties>
 
     <modules>
+        <module>web-shop-cloud-ui-rest-dao</module>
         <module>web-shop-cloud-security-and-logging</module>
         <module>web-shop-cloud-domain</module>
         <module>web-shop-cloud-ui</module>
