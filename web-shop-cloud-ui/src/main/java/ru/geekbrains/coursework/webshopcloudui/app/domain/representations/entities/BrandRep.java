@@ -15,10 +15,12 @@ public class BrandRep extends ARepresentation<BrandRep> {
         return this;
     }
 
+    @Deprecated
     public Set<ProductRep> getProducts() {
         return this.productReps;
     }
 
+    @Deprecated
     public BrandRep setProducts(Set<ProductRep> productReps) {
         this.productReps = productReps;
         return this;

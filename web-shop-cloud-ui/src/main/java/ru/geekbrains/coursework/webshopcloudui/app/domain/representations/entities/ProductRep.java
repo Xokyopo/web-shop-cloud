@@ -8,10 +8,12 @@ public class ProductRep extends ARepresentation<ProductRep> {
     private Set<String> imagesUrls;
     private long price;
 
+    @Deprecated
     public Set<CategoryRep> getCategories() {
         return this.categories;
     }
 
+    @Deprecated
     public ProductRep setCategories(Set<CategoryRep> categories) {
         this.categories = categories;
         return this;
@@ -26,10 +28,12 @@ public class ProductRep extends ARepresentation<ProductRep> {
         return this;
     }
 
+    @Deprecated
     public Set<String> getImagesUrls() {
         return imagesUrls;
     }
 
+    @Deprecated
     public ProductRep setImagesUrls(Set<String> imagesUrls) {
         this.imagesUrls = imagesUrls;
         return this;

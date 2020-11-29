@@ -15,10 +15,12 @@ public class UserRep extends ARepresentation<UserRep> {
         return this;
     }
 
+    @Deprecated
     public Set<RoleRep> getRoles() {
         return this.roleReps;
     }
 
+    @Deprecated
     public UserRep setRoles(Set<RoleRep> roleReps) {
         this.roleReps = roleReps;
         return this;

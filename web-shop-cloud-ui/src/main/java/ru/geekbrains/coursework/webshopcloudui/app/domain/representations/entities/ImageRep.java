@@ -33,10 +33,12 @@ public class ImageRep extends ARepresentation<ImageRep> {
         return this;
     }
 
+    @Deprecated
     public byte[] getData() {
         return data;
     }
 
+    @Deprecated
     public ImageRep setData(byte[] data) {
         this.data = data;
         return this;
