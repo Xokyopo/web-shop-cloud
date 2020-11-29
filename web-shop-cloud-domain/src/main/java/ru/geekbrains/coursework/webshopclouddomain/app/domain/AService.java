@@ -6,40 +6,37 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.converters.AConverter;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public abstract class AService<E, R extends ARepository<E>> {
+public abstract class AService<E, P, R extends ARepository<E>> {
     private Class<E> entitiesClass;
+    private AConverter<E, P> converter;
     private R repository;
 
     @Autowired
-    public void init(R repository) {
+    public void init(R repository, AConverter<E, P> converter) {
         this.repository = repository;
         this.entitiesClass = this.getEntitiesClassBy(repository);
     }
 
-    public List<E> getAll() {
-        return this.repository.findAll();
+    public List<P> getAll() {
+        return this.repository.findAll().stream().map(this.converter::toRepresentation).collect(Collectors.toList());
     }
 
-    public Page<E> getAll(Pageable pageable) {
+    public Page<P> getAll(Pageable pageable) {
         this.requireNotNull(pageable, "pageable cant be NULL");
 
-        return this.repository.findAll(pageable);
+        return this.repository.findAll(pageable).map(this.converter::toRepresentation);
     }
 
-    public Optional<E> getById(Long id) {
+    public Optional<P> getById(Long id) {
         this.requireNotNull(id, "EntityID Cant be NULL");
 
-        return (id == 0) ? Optional.of(this.getEmptyEntity()) : this.repository.findById(id);
-    }
-
-    public void save(E entity) {
-        this.requireNotNull(entity, "Entity Cant be NULL");
-
-        this.repository.save(entity);
+        return ((id == 0) ? Optional.of(this.getEmptyEntity()) : this.repository.findById(id)).map(this.converter::toRepresentation);
     }
 
     public void delete(Long id) {
@@ -50,6 +47,10 @@ public abstract class AService<E, R extends ARepository<E>> {
 
     public R getRepository() {
         return repository;
+    }
+
+    public AConverter<E, P> getConverter() {
+        return converter;
     }
 
     public String getEntityName() {
@@ -75,4 +76,6 @@ public abstract class AService<E, R extends ARepository<E>> {
             throw new RuntimeException(e);
         }
     }
+
+    public abstract void save(P representation);
 }
