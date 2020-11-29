@@ -31,7 +31,6 @@
                             <th scope="col">id</th>
                             <th scope="col">logo</th>
                             <th scope="col">name</th>
-                            <th scope="col">productReps count</th>
                             <th scope="col">actions</th>
                         </tr>
                         </thead>
@@ -44,7 +43,6 @@
                                 <span th:if="!${brandRep.logoUrl}">not logo</span>
                             </th>
                             <td th:text="${brandRep.name}">brandRep name</td>
-                            <td th:text="${brandRep.productReps.size()}">brands productRep</td>
                             <td class="row">
                                 <!-- поменять потом скоуп на другой так как он делает буквы жирными.-->
                                 <a class="btn btn-warning  mr-2"

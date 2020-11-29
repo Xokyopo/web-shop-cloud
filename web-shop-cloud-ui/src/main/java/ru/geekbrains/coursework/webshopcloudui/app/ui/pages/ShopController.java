@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.geekbrains.coursework.webshopclouduirestdao.AService;
+import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep;
 
 import java.util.Optional;
@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 @Controller
 public class ShopController {
     private static final int PRODUCT_LIMIT_ON_PAGE = 12; //default 12
-    private AService<ProductRep> productService;
+    private ARemoteService<ProductRep> productService;
 
     @Autowired
-    public ShopController(AService<ProductRep> productService) {
+    public ShopController(ARemoteService<ProductRep> productService) {
         this.productService = productService;
     }
 

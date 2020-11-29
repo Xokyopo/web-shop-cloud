@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.coursework.webshopclouduirestdao.AService;
+import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
-public abstract class AController<E, S extends AService<E>> {
+public abstract class AController<E, S extends ARemoteService<E>> {
     private String entityName;
     private String rootPath;
     private String entitiesTablePath;

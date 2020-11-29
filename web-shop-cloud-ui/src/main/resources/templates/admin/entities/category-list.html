@@ -30,7 +30,6 @@
                         <tr>
                             <th scope="col">id</th>
                             <th scope="col">name</th>
-                            <th scope="col">productReps count</th>
                             <th scope="col">actions</th>
                         </tr>
                         </thead>
@@ -38,7 +37,7 @@
                         <tr th:each="category : ${categorys}" th:with="entityID=${category.id}">
                             <th scope="row" th:text="${category.id}">id</th>
                             <td th:text="${category.name}">brandRep name</td>
-                            <td th:text="${category.productReps.size()}">brands productRep</td>
+
                             <td class="row">
                                 <!-- поменять потом скоуп на другой так как он делает буквы жирными.-->
                                 <a class="btn btn-warning  mr-2"

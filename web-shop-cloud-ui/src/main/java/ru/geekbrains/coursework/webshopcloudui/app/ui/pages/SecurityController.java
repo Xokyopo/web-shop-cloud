@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.geekbrains.coursework.webshopclouduirestdao.UserRepService;
+import ru.geekbrains.coursework.webshopclouduirestdao.UserRepRemoteService;
 
 public class SecurityController {
-    private UserRepService userRepAService;
+    private UserRepRemoteService userRepAService;
 
     @Autowired
-    public SecurityController(UserRepService userRepAService) {
+    public SecurityController(UserRepRemoteService userRepAService) {
         this.userRepAService = userRepAService;
     }
 

@@ -31,16 +31,14 @@
                             <th scope="col">id</th>
                             <th scope="col">name</th>
                             <th scope="col">description</th>
-                            <th scope="col">userReps</th>
                             <th scope="col">actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="role : ${roleReps}" th:with="entityID=${role.id}">
                             <th scope="row" th:text="${role.id}">id</th>
-                            <td th:text="${role.name}">user name</td>
-                            <td th:text="${role.description}">user password</td>
-                            <td th:text="${role.userReps.size()}">user roleReps</td>
+                            <td th:text="${role.name}">role name</td>
+                            <td th:text="${role.description}">role description</td>
                             <td class="row">
                                 <!-- поменять потом скоуп на другой так как он делает буквы жирными.-->
                                 <a class="btn btn-warning  mr-2"

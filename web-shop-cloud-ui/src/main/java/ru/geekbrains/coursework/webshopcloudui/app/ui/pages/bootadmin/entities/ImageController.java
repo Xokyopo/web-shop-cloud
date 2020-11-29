@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshopclouduirestdao.ImageRepService;
+import ru.geekbrains.coursework.webshopclouduirestdao.ImageRepRemoteService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.ImageRep;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin/entities/image")
-public class ImageController extends AController<ImageRep, ImageRepService> {
+public class ImageController extends AController<ImageRep, ImageRepRemoteService> {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<byte[]> getAsResource(@PathVariable("id") Long id) {
