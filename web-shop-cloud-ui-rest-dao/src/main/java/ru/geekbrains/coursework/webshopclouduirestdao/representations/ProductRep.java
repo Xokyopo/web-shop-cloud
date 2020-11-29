@@ -1,4 +1,4 @@
-package ru.geekbrains.coursework.webshopcloudui.app.domain.representations;
+package ru.geekbrains.coursework.webshopclouduirestdao.representations;
 
 import java.util.Set;
 

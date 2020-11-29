@@ -1,4 +1,4 @@
-package ru.geekbrains.coursework.webshopcloudui.app.domain.representations;
+package ru.geekbrains.coursework.webshopclouduirestdao.representations;
 
 public class ImageRep extends ARepresentation<ImageRep> {
     private String type;
