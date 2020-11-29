@@ -5,18 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.ProductRep;
 
 import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/product")
 public class SingleProductController {
-    private AService<Product> productService;
+    private AService<ProductRep> productService;
     private CartController cartController;
 
     @Autowired
-    public SingleProductController(AService<Product> productService, CartController cartController) {
+    public SingleProductController(AService<ProductRep> productService, CartController cartController) {
         this.productService = productService;
         this.cartController = cartController;
     }

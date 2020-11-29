@@ -7,14 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.ImageService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Image;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.ImageRep;
 
 import java.util.List;
 import java.util.Optional;
 //TODO delete Program utils
 @Controller
 @RequestMapping("/admin/entities/image")
-public class ImageController extends AController<Image, ImageService> {
+public class ImageController extends AController<ImageRep, ImageService> {
 
     @Override
     @GetMapping("/showAll")
@@ -32,27 +32,27 @@ public class ImageController extends AController<Image, ImageService> {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<byte[]> getAsResource(@PathVariable("id") Long id) {
-        Optional<Image> optionalImage = this.getService().getById(id);
+        Optional<ImageRep> optionalImage = this.getService().getById(id);
 
         if (optionalImage.isPresent()) {
-            Image image = optionalImage.get();
+            ImageRep imageRep = optionalImage.get();
             return ResponseEntity.ok()
-                    .contentType(MediaType.valueOf(image.getType()))
-                    .contentLength(image.getSize())
-                    .body(image.getData());
+                    .contentType(MediaType.valueOf(imageRep.getType()))
+                    .contentLength(imageRep.getSize())
+                    .body(imageRep.getData());
         }
         return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/save")
-    public String save(Image entity, @RequestParam("uploadList") List<MultipartFile> multipartFiles) {
+    public String save(ImageRep entity, @RequestParam("uploadList") List<MultipartFile> multipartFiles) {
         this.getService().save(entity, multipartFiles);
         return "redirect:/" + this.getRootPath() + "/showAll";
     }
 
     @Override
     @PostMapping("/save/old")
-    public String save(Image entity) {
+    public String save(ImageRep entity) {
         throw new UnsupportedOperationException("method save(Image entity) not support use save(Image entity, Multipart)");
     }
 }

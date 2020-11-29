@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.ProductRep;
 
 import java.util.Optional;
 
@@ -17,11 +17,11 @@ import java.util.Optional;
 @RequestMapping("/shop")
 public class ShopController {
     private static final int PRODUCT_LIMIT_ON_PAGE = 12; //default 12
-    private AService<Product> productService;
+    private AService<ProductRep> productService;
     private CartController cartController;
 
     @Autowired
-    public ShopController(AService<Product> productService, CartController cartController) {
+    public ShopController(AService<ProductRep> productService, CartController cartController) {
         this.productService = productService;
         this.cartController = cartController;
     }

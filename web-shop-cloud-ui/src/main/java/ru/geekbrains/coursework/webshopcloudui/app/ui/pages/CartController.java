@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.SessionScope;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.ASaleService;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.entities.Product;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.ProductRep;
 import ru.geekbrains.coursework.webshopcloudui.app.ui.pages.represantations.CartStatus;
 
 import java.util.HashMap;
@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/cart")
 @SessionScope
 public class CartController {
-    private AService<Product> productService;
+    private AService<ProductRep> productService;
     private ASaleService saleService;
-    private HashMap<Product, Integer> cart;
+    private HashMap<ProductRep, Integer> cart;
     private long fullPrice;
     private long productCount;
 
     @Autowired
-    public CartController(AService<Product> productService, ASaleService saleService) {
+    public CartController(AService<ProductRep> productService, ASaleService saleService) {
         this.saleService = saleService;
         this.cart = new HashMap<>();
         this.productService = productService;
@@ -67,7 +67,7 @@ public class CartController {
     @PostMapping("/buy")
     public String buy(Model model) {
         this.saleService.sale(this.cart);
-        Map<Product, Integer> buys = this.cart;
+        Map<ProductRep, Integer> buys = this.cart;
         this.cart = new HashMap<>();
         this.fullPrice = 0;
         this.productCount = 0;
