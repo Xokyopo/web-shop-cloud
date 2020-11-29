@@ -6,7 +6,7 @@ import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entiti
 import java.util.HashMap;
 import java.util.Optional;
 
-public interface ASaleService {
+public interface SaleRepService {
     void sale(HashMap<ProductRep, Integer> cart);
 
     Sale getAll();
