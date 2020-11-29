@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templates/fragments :: head(title='eElectronics - HTML eCommerce Template')">
+</head>
+<body>
+<div th:replace="templates/fragments :: header(current='Shop')"></div>
+
+<div th:replace="templates/fragments :: titleArea(text='Shop')"></div>
+
+<div class="row">
+    <div class="col">
+        <!-- for you content start -->
+
+        <div class="container" th:fragment="test">
+            <div class="row">
+
+                <!-- item place start -->
+
+                <div class="card m-2" th:each="productRep : ${productsPages.content}">
+                    <div class="img">
+                        <img alt="..." src="img/productRep-1.jpg" th:src="${productRep.imagesUrls?.stream().findAny().get()}">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a class="text-success" href="#" th:href="@{/productRep/{id}(id = ${productRep.id})}"
+                               th:text="${productRep.name}">productRep name</a>
+                        </h5>
+                        <div>
+                            <ins class="text-success h6 font-weight-bolder" th:text="${productRep.price}">$899.00</ins>
+                            <del class="ml-2 h6" th:text="${#numbers.formatDecimal(productRep.price * 1.13, 0, 2)}">
+                                $999.00
+                            </del>
+                        </div>
+                        <div>
+                            <form action="#" method="post" th:action="@{/shop/addToCart}">
+                                <input name="id" th:value="${productRep.id}" type="hidden"/>
+                                <button class="btn btn-success h6 m-0 mt-2" type="submit">
+                                    <i class="fa fa-shopping-cart"></i> Add to cart
+                                </button>
+                            </form>
+                            <!--                                <a class="btn btn-success h6 m-0 mt-2" href="">Add to cart</a>-->
+                            <!--                                <a href="#"><i class="fa fa-link"></i> See details</a>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- item place end -->
+            </div>
+
+            <div class="row justify-content-center mt-5" th:if="${productsPages.totalPages > 1}">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-sm m-0">
+                        <li class="page-item" th:if="${productsPages.hasPrevious()}">
+                            <a class="page-link text-success" href="#"
+                               th:href="@{/shop(page = ${productsPages.previousPageable().pageNumber + 1})}">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <li class="page-item" th:classappend="${productsPages.getNumber() + 1 == num} ? 'active'"
+                            th:each="num : ${#numbers.sequence(1, productsPages.totalPages)}">
+                            <a class="page-link text-success" href="#" th:href="@{/shop(page = ${num})}"
+                               th:text="${num}">1</a>
+                        </li>
+
+                        <li class="page-item" th:if="${productsPages.hasNext()}">
+                            <a class="page-link text-success" href="#"
+                               th:href="@{/shop(page = ${productsPages.nextPageable().pageNumber + 1})}">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- for you content end -->
+    </div>
+</div>
+
+<div th:replace="templates/fragments :: footer"></div>
+</body>
+</html>

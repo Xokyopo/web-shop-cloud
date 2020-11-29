@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:insert="templates/fragments :: head(title='eElectronics - HTML eCommerce Template')">
+</head>
+<body>
+<div th:replace="templates/fragments :: header(current='Cart')"></div>
+
+<div th:replace="templates/fragments :: titleArea(text='Cart')"></div>
+
+<div class="row">
+    <div class="col">
+        <!-- for you content start -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <h4 class="text-success">Related Products</h4>
+                        <ul class="list-group mb-5">
+                            <li class="list-group-item border-0 p-0 mb-4 d-flex"
+                                th:each="relatedProduct : ${relatedProducts}">
+                                <img alt="" class="img-4r" src="img/productRep-thumb-1.jpg"
+                                     th:src="${relatedProduct.imagesUrls?.stream().findAny().get()}">
+                                <div class="col">
+                                    <h5><a class="text-dark" href="single-productRep.html"
+                                           th:href="@{/productRep/{id}(id=${relatedProduct.id})}"
+                                           th:text="${relatedProduct.name}">Sony Smart TV - 2015</a></h5>
+                                    <div class="h6">
+                                        <ins class="text-success" th:text="${relatedProduct.price}">$700.00</ins>
+                                        <del th:text="${#numbers.formatDecimal(relatedProduct.price * 1.13, 0, 2)}">
+                                            $800.00
+                                        </del>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-success">Recent Posts</h4>
+                        <ul class="list-group list-group-flush h6">
+                            <li class="list-group-item">
+                                <a class="text-success" href="#">Sony Smart TV - 2015</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a class="text-success" href="#">Sony Smart TV - 2015</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a class="text-success" href="#">Sony Smart TV - 2015</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a class="text-success" href="#">Sony Smart TV - 2015</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a class="text-success" href="#">Sony Smart TV - 2015</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="productRep-content-right">
+                        <!-- cart table start -->
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="calculated" th:each="productEntry : ${cart}">
+                                <td class="text-center align-middle" scope="row">
+                                    <form action="#" method="post"
+                                          th:action="@{/cart/del/{id}(id = ${productEntry.getKey().id})}">
+                                        <button class="btn btn-outline-danger border-0 sign text-success"
+                                                title="Remove this item" type="submit">×
+                                        </button>
+                                    </form>
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <a href="single-productRep.html"
+                                       th:href="@{/productRep/{id}(id = ${productEntry.getKey().id})}">
+                                        <img alt="poster_1_up" class="img-5r" src="img/productRep-thumb-2.jpg"
+                                             th:src="${productEntry.getKey().imagesUrls?.stream().findAny().get()}">
+                                    </a>
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <a class="nav-link productRep" href="single-productRep.html"
+                                       th:href="@{/productRep/{id}(id = ${productEntry.getKey().id})}"
+                                       th:text="${productEntry.getKey().name}">Ship Your Idea</a>
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <span class="basis" th:text="${productEntry.getKey().price}">15.00</span>
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <!-- размеры для мелких кнопок -->
+                                    <input class="minus btn btn-success sign" type="button" value="-"/>
+                                    <input class="count input-text text-right border border-success"
+                                           style="width:4rem;" th:value="${productEntry.getValue()}"
+                                           title="Qty" type="number" value="1"/>
+                                    <input class="plus btn btn-success sign plus" type="button" value="+"/>
+                                </td>
+
+                                <td class="text-center align-middle">
+                                    <span class="result">15.00</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle" colspan="5">
+                                    <span>Current full price:</span>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <span id="currentFP">0</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <form action="#" method="post" th:action="@{/cart/buy}">
+                                        <button class="btn btn-success w-100" name="proceed" type="submit">Buy</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- card table end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- for you content end -->
+    </div>
+</div>
+
+<div th:replace="templates/fragments :: footer"></div>
+<!-- init cat -->
+<script type="text/javascript">
+    $(document).ready(() => {
+        initCalculate();
+    });
+</script>
+</body>
+</html>
