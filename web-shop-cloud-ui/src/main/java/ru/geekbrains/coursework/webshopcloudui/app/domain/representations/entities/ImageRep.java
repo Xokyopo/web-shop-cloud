@@ -3,7 +3,7 @@ package ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entit
 public class ImageRep extends ARepresentation<ImageRep> {
     private String type;
     private String path;
-    private long size;
+    private String size;
     private byte[] data;
 
     public String getType() {
@@ -24,11 +24,11 @@ public class ImageRep extends ARepresentation<ImageRep> {
         return this;
     }
 
-    public long getSize() {
+    public String getSize() {
         return size;
     }
 
-    public ImageRep setSize(long size) {
+    public ImageRep setSize(String size) {
         this.size = size;
         return this;
     }
