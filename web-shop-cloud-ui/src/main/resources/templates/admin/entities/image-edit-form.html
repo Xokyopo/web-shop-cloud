@@ -63,12 +63,7 @@
                     <!--      imageRep new loader      -->
                     <form action="#" enctype="multipart/form-data" method="post" th:action="@{${rootDir} + '/save'}">
 
-                        <input th:field="${imageRep.id}" type="hidden">
-                        <input th:field="${imageRep.name}" type="hidden">
-                        <input th:field="${imageRep.path}" type="hidden">
-                        <input th:field="${imageRep.type}" type="hidden">
-                        <input th:field="${imageRep.size}" type="hidden">
-                        <input th:field="${imageRep.data}" type="hidden">
+                        <input name="id" th:value="${imageRep.id}" type="hidden">
 
                         <input name="uploadList" th:multiple="${imageRep.id == 0}" type="file">
 

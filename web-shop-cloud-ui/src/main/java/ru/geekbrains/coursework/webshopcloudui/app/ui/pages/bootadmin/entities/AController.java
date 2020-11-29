@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
+import ru.geekbrains.coursework.webshopclouduirestdao.AService;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.Optional;

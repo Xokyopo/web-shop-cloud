@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.BrandRep;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.CategoryRep;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.ProductRep;
+import ru.geekbrains.coursework.webshopclouduirestdao.AService;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.BrandRep;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.CategoryRep;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep;
 
 @Controller
 @RequestMapping("/admin/entities/product")
