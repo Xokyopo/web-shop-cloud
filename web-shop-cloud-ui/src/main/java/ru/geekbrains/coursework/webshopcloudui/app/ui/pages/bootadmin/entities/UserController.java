@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.RoleRep;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.UserRep;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.RoleRep;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.UserRep;
 
 @Controller
 @RequestMapping("/admin/entities/user")

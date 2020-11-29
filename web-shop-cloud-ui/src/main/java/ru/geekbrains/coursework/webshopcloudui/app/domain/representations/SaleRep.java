@@ -1,4 +1,4 @@
-package ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities;
+package ru.geekbrains.coursework.webshopcloudui.app.domain.representations;
 
 import java.io.Serializable;
 
