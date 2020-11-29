@@ -4,12 +4,13 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.SaleRep;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 public interface SaleRepService {
-    void sale(HashMap<ProductRep, Integer> cart);
+    List<SaleRep> sale(HashMap<ProductRep, Integer> cart);
 
-    SaleRep getAll();
+    List<SaleRep> getAll();
 
-    Optional<SaleRep> getProductBySaleId(long id);
+    Optional<ProductRep> getProductBySaleId(long id);
 }

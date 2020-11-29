@@ -5,6 +5,6 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.ImageRep;
 
 import java.util.List;
 
-public interface ImageRepService extends AService<ImageRep> {
+public interface ImageRepRemoteService extends ARemoteService<ImageRep> {
     void save(long id, List<MultipartFile> multipartFiles);
 }

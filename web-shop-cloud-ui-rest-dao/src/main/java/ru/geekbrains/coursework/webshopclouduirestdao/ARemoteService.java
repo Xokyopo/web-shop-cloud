@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 import java.util.Optional;
 
-public interface AService<E> {
+public interface ARemoteService<E> {
 
     List<E> getAll();
 

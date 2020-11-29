@@ -2,5 +2,5 @@ package ru.geekbrains.coursework.webshopclouduirestdao;
 
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep;
 
-public interface ProductRepService extends AService<ProductRep> {
+public interface ProductRepRemoteService extends ARemoteService<ProductRep> {
 }

@@ -1,32 +1,13 @@
 package ru.geekbrains.coursework.webshopclouduirestdao.representations;
 
-import java.util.Set;
-
-public class BrandRep extends ARepresentation<BrandRep> {
+public class BrandRep extends ARepresentation {
     private String logoUrl;
-    private Set<ProductRep> productReps;
 
     public String getLogoUrl() {
         return logoUrl;
     }
 
-    public BrandRep setLogoUrl(String logoUrl) {
+    public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
-        return this;
-    }
-
-    @Deprecated
-    public Set<ProductRep> getProducts() {
-        return this.productReps;
-    }
-
-    @Deprecated
-    public BrandRep setProducts(Set<ProductRep> productReps) {
-        this.productReps = productReps;
-        return this;
-    }
-
-    public void executePreRemove() {
-        this.productReps.forEach(product -> product.setBrand(null));
     }
 }

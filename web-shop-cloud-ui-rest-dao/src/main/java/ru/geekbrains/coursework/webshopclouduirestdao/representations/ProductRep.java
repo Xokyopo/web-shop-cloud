@@ -2,49 +2,41 @@ package ru.geekbrains.coursework.webshopclouduirestdao.representations;
 
 import java.util.Set;
 
-public class ProductRep extends ARepresentation<ProductRep> {
+public class ProductRep extends ARepresentation {
     private Set<CategoryRep> categories;
     private BrandRep brandRep;
     private Set<String> imagesUrls;
-    private long price;
+    private String price;
 
-    @Deprecated
     public Set<CategoryRep> getCategories() {
-        return this.categories;
+        return categories;
     }
 
-    @Deprecated
-    public ProductRep setCategories(Set<CategoryRep> categories) {
+    public void setCategories(Set<CategoryRep> categories) {
         this.categories = categories;
-        return this;
     }
 
-    public BrandRep getBrand() {
-        return this.brandRep;
+    public BrandRep getBrandRep() {
+        return brandRep;
     }
 
-    public ProductRep setBrand(BrandRep brandRep) {
+    public void setBrandRep(BrandRep brandRep) {
         this.brandRep = brandRep;
-        return this;
     }
 
-    @Deprecated
     public Set<String> getImagesUrls() {
         return imagesUrls;
     }
 
-    @Deprecated
-    public ProductRep setImagesUrls(Set<String> imagesUrls) {
+    public void setImagesUrls(Set<String> imagesUrls) {
         this.imagesUrls = imagesUrls;
-        return this;
     }
 
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public ProductRep setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
-        return this;
     }
 }

@@ -5,63 +5,56 @@ import java.io.Serializable;
 public class SaleRep implements Serializable {
     private long id;
     private String dateTime;
-    private long count;
-    private long price;
+    private String count;
+    private String price;
+    private String fullPrice;
     private ProductRep productRep;
 
     public long getId() {
         return id;
     }
 
-    public SaleRep setId(long id) {
+    public void setId(long id) {
         this.id = id;
-        return this;
     }
 
     public String getDateTime() {
         return dateTime;
     }
 
-    public SaleRep setDateTime(String dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
-        return this;
     }
 
-    public long getCount() {
+    public String getCount() {
         return count;
     }
 
-    public SaleRep setCount(long count) {
+    public void setCount(String count) {
         this.count = count;
-        return this;
     }
 
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public SaleRep setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
-        return this;
     }
 
-    public ProductRep getProduct() {
+    public String getFullPrice() {
+        return fullPrice;
+    }
+
+    public void setFullPrice(String fullPrice) {
+        this.fullPrice = fullPrice;
+    }
+
+    public ProductRep getProductRep() {
         return productRep;
     }
 
-    public SaleRep setProduct(ProductRep productRep) {
+    public void setProductRep(ProductRep productRep) {
         this.productRep = productRep;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "Sale{" +
-                "id=" + id +
-                ", dateTime=" + dateTime +
-                ", count=" + count +
-                ", price=" + price +
-                ", productsAsJSON='" + productRep + '\'' +
-                '}';
     }
 }
