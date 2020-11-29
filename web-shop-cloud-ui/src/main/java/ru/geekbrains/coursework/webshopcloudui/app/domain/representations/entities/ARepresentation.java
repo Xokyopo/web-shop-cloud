@@ -1,8 +1,9 @@
-package ru.geekbrains.coursework.webshopcloudui.app.domain.entities;
+package ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class AEntity {
+public abstract class ARepresentation<E> implements Serializable {
     private long id;
     private String name;
 
@@ -10,24 +11,26 @@ public abstract class AEntity {
         return this.id;
     }
 
-    public void setId(long id) {
+    public E setId(long id) {
         this.id = id;
+        return (E)this;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {
+    public E setName(String name) {
         this.name = name;
+        return (E)this;
     }
 
     public boolean equals(Object comparedObject) {
         if (this == comparedObject) {
             return true;
         } else if (comparedObject != null && this.getClass() == comparedObject.getClass()) {
-            AEntity aEntity = (AEntity) comparedObject;
-            return this.getId() == aEntity.getId() && this.getName().equals(aEntity.getName());
+            ARepresentation<E> aRepresentation = (ARepresentation<E>) comparedObject;
+            return this.getId() == aRepresentation.getId() && this.getName().equals(aRepresentation.getName());
         } else {
             return false;
         }
