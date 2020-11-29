@@ -6,27 +6,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshopcloudui.app.domain.ImageService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.ImageRepService;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entities.ImageRep;
 
 import java.util.List;
 import java.util.Optional;
-//TODO delete Program utils
+
 @Controller
 @RequestMapping("/admin/entities/image")
-public class ImageController extends AController<ImageRep, ImageService> {
+public class ImageController extends AController<ImageRep, ImageRepService> {
 
     @Override
     @GetMapping("/showAll")
     public String showAll(Model model) {
-        model.addAttribute("programUtils", new ProgramUtils());
         return super.showAll(model);
     }
 
     @Override
     @GetMapping("/show/{id}")
     public String show(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("programUtils", new ProgramUtils());
         return super.show(model, id);
     }
 
@@ -38,7 +36,7 @@ public class ImageController extends AController<ImageRep, ImageService> {
             ImageRep imageRep = optionalImage.get();
             return ResponseEntity.ok()
                     .contentType(MediaType.valueOf(imageRep.getType()))
-                    .contentLength(imageRep.getSize())
+//                    .contentLength(imageRep.getSize())
                     .body(imageRep.getData());
         }
         return ResponseEntity.notFound().build();

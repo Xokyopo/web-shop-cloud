@@ -5,9 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.geekbrains.coursework.webshopcloudui.app.domain.AService;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Optional;
 
 public abstract class AController<E, S extends AService<E>> {
     private String entityName;
@@ -18,8 +20,9 @@ public abstract class AController<E, S extends AService<E>> {
 
     @Autowired
     public void init(S service) {
-        rootPath = ProgramUtils.getRequestMappingValue(this).stream()
-                .map(ProgramUtils::removeSlashOnStartAndEnd)
+        //may be rewrite???
+        rootPath = AController.getRequestMappingValue(this).stream()
+                .map(AController::removeSlashOnStartAndEnd)
                 .findFirst()
                 .orElse("");
         this.service = service;
@@ -66,5 +69,19 @@ public abstract class AController<E, S extends AService<E>> {
 
     protected String getEditFormPath() {
         return editFormPath;
+    }
+
+    private static Optional<String> getRequestMappingValue(Object object) {
+        String result = "";
+        if (object.getClass().isAnnotationPresent(RequestMapping.class)) {
+            result = object.getClass().getAnnotation(RequestMapping.class).value()[0];
+        }
+        return (result.isEmpty()) ? Optional.empty() : Optional.of(result);
+    }
+
+    private static String removeSlashOnStartAndEnd(String text) {
+        return (text.substring(
+                text.startsWith("/") ? 1 : 0,
+                text.endsWith("/") ? text.length() - 1 : text.length()));
     }
 }
