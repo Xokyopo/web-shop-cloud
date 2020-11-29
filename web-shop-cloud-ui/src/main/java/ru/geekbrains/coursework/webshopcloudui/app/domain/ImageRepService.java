@@ -5,6 +5,6 @@ import ru.geekbrains.coursework.webshopcloudui.app.domain.representations.entiti
 
 import java.util.List;
 
-public interface ImageService extends AService<ImageRep> {
+public interface ImageRepService extends AService<ImageRep> {
     void save(ImageRep entity, List<MultipartFile> multipartFiles);
 }
