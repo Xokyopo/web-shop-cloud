@@ -1,6 +1,5 @@
 package ru.geekbrains.coursework.webshopcloudui.app.ui.pages.bootadmin.entities;
 
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +18,17 @@ public class ImageController extends AController<ImageRep, ImageRepRemoteService
     public ResponseEntity<byte[]> getAsResource(@PathVariable("id") Long id) {
         Optional<ImageRep> optionalImage = this.getService().getById(id);
 
-        if (optionalImage.isPresent()) {
-            ImageRep imageRep = optionalImage.get();
-            return ResponseEntity.ok()
-                    .contentType(MediaType.valueOf(imageRep.getType()))
+        throw new UnsupportedOperationException("ResponseEntity");
+
+//        if (optionalImage.isPresent()) {
+//            ImageRep imageRep = optionalImage.get();
+//            return ResponseEntity.ok()
+//                    .contentType(MediaType.valueOf(imageRep.getType()))
 //                    .contentLength(imageRep.getSize())
-                    .body(imageRep.getData());
-        }
-        return ResponseEntity.notFound().build();
+//                    .body(imageRep.getData());
+//            TODO
+//        }
+//        return ResponseEntity.notFound().build();
     }
 
     @PostMapping("/save")
