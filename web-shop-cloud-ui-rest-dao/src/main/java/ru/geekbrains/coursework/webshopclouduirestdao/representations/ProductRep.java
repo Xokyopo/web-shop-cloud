@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class ProductRep extends ARepresentation {
     private Set<CategoryRep> categories;
-    private BrandRep brandRep;
+    private BrandRep brand;
     private Set<String> imagesUrls;
     private String price;
 
@@ -16,12 +16,12 @@ public class ProductRep extends ARepresentation {
         this.categories = categories;
     }
 
-    public BrandRep getBrandRep() {
-        return brandRep;
+    public BrandRep getBrand() {
+        return brand;
     }
 
-    public void setBrandRep(BrandRep brandRep) {
-        this.brandRep = brandRep;
+    public void setBrand(BrandRep brand) {
+        this.brand = brand;
     }
 
     public Set<String> getImagesUrls() {
