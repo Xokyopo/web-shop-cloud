@@ -21,7 +21,7 @@ public interface ARemoteService<E> {
     @DeleteMapping("/delete/{id}")
     void delete(@PathVariable("id") Long id);
 
-    @PostMapping("save")
+    @PostMapping("/save")
     void save(@RequestParam("entity") E entity);
 
     @PostMapping("/getPage")
