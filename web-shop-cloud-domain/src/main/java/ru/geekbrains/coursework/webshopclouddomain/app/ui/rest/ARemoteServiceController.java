@@ -3,6 +3,7 @@ package ru.geekbrains.coursework.webshopclouddomain.app.ui.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.AService;
 import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
@@ -19,36 +20,42 @@ public abstract class ARemoteServiceController<P, S extends AService<?, P, ? ext
     }
 
     @Override
+    @GetMapping("/getAll")
     public List<P> getAll() {
         return this.service.getAll();
     }
 
     @Override
-    public Page<P> getAll(PageRequest of) {
+    @GetMapping("/getPage")
+    public Page<P> getAll(@RequestParam("of") PageRequest of) {
         return this.service.getAll(of);
     }
 
     @Override
+    @GetMapping("/getEntityName")
     public String getEntityName() {
         return this.service.getEntityName();
     }
 
     @Override
-    public Optional<P> getById(Long id) {
+    @GetMapping("/getById/{id}")
+    public Optional<P> getById(@PathVariable("id") Long id) {
         return this.service.getById(id);
     }
 
     @Override
-    public void save(P representation) {
+    @PostMapping("/save")
+    public void save(@RequestParam("representation") P representation) {
         this.service.save(representation);
     }
 
     @Override
-    public void delete(Long id) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable("id") Long id) {
         this.service.delete(id);
     }
 
-    public S getService() {
+    protected S getService() {
         return service;
     }
 }
