@@ -13,6 +13,7 @@ import java.util.List;
 
 @FeignClient(value = "image-service", url = "http://localhost:9090/image")
 public interface ImageRepConnector extends ARemoteService<ImageRep> {
+
     @PostMapping("/save")
     void save(@RequestParam("id") long id, @RequestParam("multipartFiles") List<MultipartFile> multipartFiles);
 

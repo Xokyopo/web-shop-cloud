@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @FeignClient(value = "sale-service", url = "http://localhost:9090/sale")
 public interface SaleRepConnector {
+
     @PostMapping("/sale")
     void sale(@RequestParam("cart") HashMap<ProductRep, Integer> cart);
 
