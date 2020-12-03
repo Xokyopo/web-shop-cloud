@@ -1,9 +1,6 @@
 package ru.geekbrains.coursework.webshopclouddomain.app.ui.rest;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.ImageService;
 import ru.geekbrains.coursework.webshopclouduirestdao.ImageRepRemoteService;
@@ -19,5 +16,11 @@ public class ImageRepController extends ARemoteServiceController<ImageRep, Image
     @PostMapping("/save")
     public void save(@RequestParam("id") long id, @RequestParam("multipartFiles") List<MultipartFile> multipartFiles) {
         this.getService().save(id, multipartFiles);
+    }
+
+    @Override
+    @GetMapping("/getImageData/{id}")
+    public byte[] getImageData(@PathVariable("id") Long id) {
+        return this.getService().getImageData(id);
     }
 }
