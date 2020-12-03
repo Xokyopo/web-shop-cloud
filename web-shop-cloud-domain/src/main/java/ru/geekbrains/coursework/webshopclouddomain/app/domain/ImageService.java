@@ -30,4 +30,8 @@ public class ImageService extends AService<Image, ImageRep, ImageRepository> {
     public void save(ImageRep representation) {
         throw new UnsupportedOperationException("ImageService.save()");
     }
+
+    public byte[] getImageData(Long id) {
+        return this.getRepository().findById(id).get().getData();
+    }
 }
