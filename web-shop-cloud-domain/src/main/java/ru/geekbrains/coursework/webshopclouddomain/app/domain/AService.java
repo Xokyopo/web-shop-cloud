@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.converters.AConverter;
+import ru.geekbrains.coursework.webshopclouddomain.app.domain.converters.AConverterIml;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,12 +15,13 @@ import java.util.stream.Collectors;
 
 public abstract class AService<E, P, R extends ARepository<E>> {
     private Class<E> entitiesClass;
-    private AConverter<E, P> converter;
+    private AConverterIml<E, P> converter;
     private R repository;
 
     @Autowired
-    public void init(R repository, AConverter<E, P> converter) {
+    public void init(R repository, AConverterIml<E, P> converter) {
         this.repository = repository;
+        this.converter = converter;
         this.entitiesClass = this.getEntitiesClassBy(repository);
     }
 
