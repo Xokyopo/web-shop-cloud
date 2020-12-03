@@ -19,6 +19,12 @@ public class ImageRepController extends ARemoteServiceController<ImageRep, Image
     }
 
     @Override
+    @PostMapping("/save/old")
+    public void save(ImageRep representation) {
+        super.save(representation);
+    }
+
+    @Override
     @GetMapping("/getImageData/{id}")
     public byte[] getImageData(@PathVariable("id") Long id) {
         return this.getService().getImageData(id);
