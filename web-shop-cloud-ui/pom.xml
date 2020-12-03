@@ -43,6 +43,13 @@
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
 
+		<!-- rest easy connector -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+
 		<!--	STOMP chat dependencies	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
