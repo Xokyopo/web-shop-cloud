@@ -1,13 +1,6 @@
 package ru.geekbrains.coursework.webshopclouddomain.app.domain.entities;
 
-import org.springframework.web.multipart.MultipartFile;
-import ru.geekbrains.coursework.webshopclouddomain.app.dao.HDDRepository;
-
 import javax.persistence.*;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.util.Arrays;
-import java.util.UUID;
 
 @Entity(name = "images")
 public class Image extends AEntity {
@@ -20,10 +13,6 @@ public class Image extends AEntity {
     private byte[] data;
 
     public Image() {
-    }
-
-    public Image(MultipartFile multipartFile) {
-        this.setAll(multipartFile);
     }
 
     public String getType() {
@@ -58,24 +47,6 @@ public class Image extends AEntity {
         this.data = data;
     }
 
-    public void setAll(MultipartFile multipartFile) {
-        //todo data byte limit is (2^16 = 65 536)
-        try {
-            if (this.data != null && !Arrays.equals(this.data, multipartFile.getBytes())) {
-                this.deleteFileBeforeRemove();
-            }
-
-            this.setName(multipartFile.getOriginalFilename());
-            this.type = multipartFile.getContentType();
-            this.size = multipartFile.getSize();
-            //65500 max blob size in MySql
-            this.path = (multipartFile.getBytes().length > 65500) ? UUID.randomUUID().toString() : null;
-            this.data = multipartFile.getBytes();
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
-    }
-
     @Override
     public String toString() {
         return "Image{" +
@@ -84,28 +55,5 @@ public class Image extends AEntity {
                 ", size = " + size +
                 ", data.length = " + (data == null ? "0" : data.length) +
                 "} " + super.toString();
-    }
-
-    @PrePersist
-    @PreUpdate
-    public void saveBigFileData() {
-        if (!this.path.isBlank()) {
-            HDDRepository.getInstance().saveToFile(this.path, this.data);
-            this.data = null;
-        }
-    }
-
-    @PreRemove
-    public void deleteFileBeforeRemove() {
-        if (!this.path.isBlank()) {
-            HDDRepository.getInstance().delete(this.path);
-        }
-    }
-
-    @PostLoad
-    public void loadBigFileData() {
-        if (!this.path.isBlank()) {
-            this.data = HDDRepository.getInstance().loadFromFile(this.path);
-        }
     }
 }
