@@ -1,5 +1,6 @@
 package ru.geekbrains.coursework.webshopcloudui.app.ui.pages.bootadmin.entities.logs;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import javax.persistence.EntityNotFoundException;
 public class SaleController {
     private SaleRepService saleService;
 
+    @Autowired
     public SaleController(SaleRepService saleService) {
         this.saleService = saleService;
     }
