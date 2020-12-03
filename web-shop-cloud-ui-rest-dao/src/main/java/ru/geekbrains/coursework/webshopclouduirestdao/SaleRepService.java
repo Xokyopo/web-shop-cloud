@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public interface SaleRepService {
     @PostMapping("/sale")
-    List<SaleRep> sale(@RequestParam("cart") HashMap<ProductRep, Integer> cart);
+    void sale(@RequestParam("cart") HashMap<ProductRep, Integer> cart);
 
     @GetMapping("/getAll")
     List<SaleRep> getAll();
