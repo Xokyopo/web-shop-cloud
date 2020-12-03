@@ -6,6 +6,6 @@ import ru.geekbrains.coursework.webshopclouddomain.app.domain.BrandService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.BrandRep;
 
 @RestController
-@RequestMapping("/bran")
+@RequestMapping("/brand")
 public class BrandRepController extends ARemoteServiceController<BrandRep, BrandService> {
 }
