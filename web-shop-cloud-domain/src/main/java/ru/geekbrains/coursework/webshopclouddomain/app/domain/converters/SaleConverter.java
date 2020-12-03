@@ -18,6 +18,13 @@ public class SaleConverter extends AConverterIml<Sale, SaleRep> {
 
     @Override
     public SaleRep toRepresentation(Sale entity) {
-        return null;
+        //TODO SaleConverter not realization
+        SaleRep result = new SaleRep();
+        result.setId(entity.getId());
+        result.setPrice("" + entity.getPrice());
+        result.setCount("" + entity.getCount());
+        result.setDateTime(entity.getDateTimeAsString());
+        result.setFullPrice("" + (entity.getPrice() * entity.getCount()));
+        return result;
     }
 }

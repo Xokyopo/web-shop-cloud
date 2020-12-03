@@ -15,7 +15,7 @@ public class ImageConverter extends AConverterIml<Image, ImageRep> {
         result.setType(entity.getType());
         result.setSize(this.convertToHumanFileLength(entity.getSize()));
         result.setPath(entity.getPath());
-        return null;
+        return result;
     }
 
     public String convertToHumanFileLength(float fileLength) {

@@ -23,6 +23,6 @@ public class UserConverter extends AConverterIml<User, UserRep> {
         result.setName(entity.getName());
         result.setPassword(entity.getPassword());
         result.setRoles(this.roleConverter.toRepresentations(entity.getRoles()));
-        return null;
+        return result;
     }
 }
