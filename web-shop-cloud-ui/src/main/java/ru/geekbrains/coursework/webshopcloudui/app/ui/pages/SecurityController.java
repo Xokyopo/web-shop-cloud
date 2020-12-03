@@ -29,7 +29,8 @@ public class SecurityController {
                           @RequestParam("password") String password,
                           @RequestParam("re_password") String rePassword) {
         try {
-            this.userRepAService.addNewUser(login, password, rePassword);
+//          TODO  добавить проверку на совпадение паролей.
+            this.userRepAService.addNewUser(login, password);
             return "login";
         } catch (Exception e) {
             e.printStackTrace();
