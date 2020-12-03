@@ -1,8 +1,9 @@
 package ru.geekbrains.coursework.webshopcloudui.app.dao.rest;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import ru.geekbrains.coursework.webshopclouduirestdao.ProductRepRemoteService;
+import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep;
 
 @FeignClient(value = "product-service", url = "http://localhost:9090/product")
-public interface ProductRepConnector extends ProductRepRemoteService {
+public interface ProductRepConnector extends ARemoteService<ProductRep> {
 }
