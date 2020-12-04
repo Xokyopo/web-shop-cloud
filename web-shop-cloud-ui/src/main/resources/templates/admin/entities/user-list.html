@@ -36,12 +36,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="user : ${userReps}" th:with="entityID=${user.id}">
+                        <tr th:each="user : ${users}" th:with="entityID=${user.id}">
                             <th scope="row" th:text="${user.id}">id</th>
                             <td th:text="${user.name}">user name</td>
                             <td th:text="${user.password}">user password</td>
                             <td>
-                                <p class="d-inline p-1 bg-primary text-white mb-0" th:each="role : ${user.roleReps}"
+                                <p class="d-inline p-1 bg-primary text-white mb-0" th:each="role : ${user.roles}"
                                    th:text="${role.name}">user roleReps</p>
                             </td>
                             <td class="row">

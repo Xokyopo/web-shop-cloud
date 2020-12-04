@@ -27,7 +27,7 @@
                            type="button">Cancel</a>
                     </div>
 
-                    <form action="#" method="post" th:action="@{${rootDir} + '/save'}" th:object="${brandRep}">
+                    <form action="#" method="post" th:action="@{${rootDir} + '/save'}" th:object="${brand}">
                         <input th:field="*{id}" type="hidden"/>
 
                         <div class="form-group">

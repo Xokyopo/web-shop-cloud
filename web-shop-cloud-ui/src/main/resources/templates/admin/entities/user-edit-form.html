@@ -46,7 +46,7 @@
                         <div class="form-group">
                             <label>Roles:</label>
                             <div class="form-check form-check-inline" th:each="role : ${allRoles}">
-                                <input th:field="*{roleReps}" th:text="${role.name}" th:value="${role.id}"
+                                <input th:field="*{roles}" th:text="${role.name}" th:value="${role.id}"
                                        type="checkbox"/>
                             </div>
                         </div>
