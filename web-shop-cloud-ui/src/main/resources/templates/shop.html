@@ -28,9 +28,9 @@
                         </h5>
                         <div>
                             <ins class="text-success h6 font-weight-bolder" th:text="${productRep.price}">$899.00</ins>
-                            <del class="ml-2 h6" th:text="${#numbers.formatDecimal(productRep.price * 1.13, 0, 2)}">
-                                $999.00
-                            </del>
+                            <!--                            <del class="ml-2 h6" th:text="${#numbers.formatDecimal(productRep.price * 1.13, 0, 2)}">-->
+                            <!--                                $999.00-->
+                            <!--                            </del>-->
                         </div>
                         <div>
                             <form action="#" method="post" th:action="@{/shop/addToCart}">
@@ -53,7 +53,7 @@
                     <ul class="pagination pagination-sm m-0">
                         <li class="page-item" th:if="${productsPages.hasPrevious()}">
                             <a class="page-link text-success" href="#"
-                               th:href="@{/shop(page = ${productsPages.previousPageable().pageNumber + 1})}">
+                               th:href="@{/shop(page = ${productsPages.previousPage + 1})}">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -66,7 +66,7 @@
 
                         <li class="page-item" th:if="${productsPages.hasNext()}">
                             <a class="page-link text-success" href="#"
-                               th:href="@{/shop(page = ${productsPages.nextPageable().pageNumber + 1})}">
+                               th:href="@{/shop(page = ${productsPages.nextPage + 1})}">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>

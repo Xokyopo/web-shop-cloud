@@ -9,6 +9,7 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.ProductRep
 public class ProductService extends AService<Product, ProductRep, ProductRepository> {
     @Override
     public void save(ProductRep representation) {
-
+        //TODO ProductService.save
+        throw new UnsupportedOperationException();
     }
 }

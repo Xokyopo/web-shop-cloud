@@ -2,12 +2,12 @@ package ru.geekbrains.coursework.webshopclouddomain.app.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ResolvableType;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.converters.AConverter;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.converters.AConverterIml;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.MyPage;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,10 +29,10 @@ public abstract class AService<E, P, R extends ARepository<E>> {
         return this.repository.findAll().stream().map(this.converter::toRepresentation).collect(Collectors.toList());
     }
 
-    public Page<P> getAll(Pageable pageable) {
+    public MyPage<P> getAll(Pageable pageable) {
         this.requireNotNull(pageable, "pageable cant be NULL");
 
-        return this.repository.findAll(pageable).map(this.converter::toRepresentation);
+        return new MyPage<>(this.repository.findAll(pageable).map(this.converter::toRepresentation));
     }
 
     public Optional<P> getById(Long id) {

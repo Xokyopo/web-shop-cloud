@@ -1,8 +1,7 @@
 package ru.geekbrains.coursework.webshopclouduirestdao;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.MyPage;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,5 +24,5 @@ public interface ARemoteService<E> {
     void save(@RequestParam("entity") E entity);
 
     @PostMapping("/getPage")
-    Page<E> getAll(@RequestParam("of") PageRequest of);
+    MyPage<E> getPage(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("sort") String sort);
 }
