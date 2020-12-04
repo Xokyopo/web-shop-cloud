@@ -18,10 +18,8 @@ public class ImageController extends AController<ImageRep, ImageRepConnector> {
     @GetMapping("/get/{id}")
     public ResponseEntity<byte[]> getAsResource(@PathVariable("id") Long id) {
         Optional<ImageRep> optionalImage = this.getService().getById(id);
-
         return optionalImage.map(imageRep -> ResponseEntity.ok()
                 .contentType(MediaType.valueOf(imageRep.getType()))
-//                .contentLength(imageRep.getSize())
                 .body(this.getService().getImageData(id))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
