@@ -1,12 +1,12 @@
 package ru.geekbrains.coursework.webshopclouddomain.app.ui.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.coursework.webshopclouddomain.app.dao.ARepository;
 import ru.geekbrains.coursework.webshopclouddomain.app.domain.AService;
 import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.MyPage;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,9 +26,9 @@ public abstract class ARemoteServiceController<P, S extends AService<?, P, ? ext
     }
 
     @Override
-    @GetMapping("/getPage")
-    public Page<P> getAll(@RequestParam("of") PageRequest of) {
-        return this.service.getAll(of);
+    @PostMapping("/getPage")
+    public MyPage<P> getPage(@RequestParam("page") int page, @RequestParam("size") int size) {
+        return this.service.getAll(PageRequest.of(page, size));
     }
 
     @Override

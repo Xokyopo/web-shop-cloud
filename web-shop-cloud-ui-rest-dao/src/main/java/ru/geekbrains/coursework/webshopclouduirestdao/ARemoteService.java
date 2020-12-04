@@ -24,5 +24,5 @@ public interface ARemoteService<E> {
     void save(@RequestParam("entity") E entity);
 
     @PostMapping("/getPage")
-    MyPage<E> getPage(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam("sort") String sort);
+    MyPage<E> getPage(@RequestParam("page") int page, @RequestParam("size") int size);
 }
