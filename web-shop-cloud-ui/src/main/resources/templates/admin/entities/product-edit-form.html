@@ -37,15 +37,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label>brand current</label>
-                            <label th:text="*{brand.id}"></label>
-                            <label th:text="*{brand.name}"></label>
-                        </div>
-
-                        <div class="form-group">
                             <label for="brand">brand</label>
                             <select class="form-control" id="brand" th:field="*{brand}" th:remove="all-but-first">
-                                <option th:each="brand : ${allBrands}" th:text="${brand.name}" th:value="${brand.id}">
+                                <option th:each="brandRep : ${allBrands}" th:text="${brandRep.name}"
+                                        th:value="${brandRep.id}">
                                     brandRep name
                                 </option>
                             </select>
