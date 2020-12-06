@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.BrandRepProxyFormatterService;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.CategoryRepProxyFormatterService;
 import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.BrandRep;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.CategoryRep;
@@ -18,7 +20,7 @@ public class ProductController extends AController<ProductRep, ARemoteService<Pr
     private ARemoteService<BrandRep> brandService;
 
     @Autowired
-    public ProductController(ARemoteService<CategoryRep> categoryService, ARemoteService<BrandRep> brandService) {
+    public ProductController(CategoryRepProxyFormatterService categoryService, BrandRepProxyFormatterService brandService) {
         this.categoryService = categoryService;
         this.brandService = brandService;
     }
