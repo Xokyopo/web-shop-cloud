@@ -11,7 +11,8 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.ImageRep;
 
 import java.util.List;
 
-@FeignClient(value = "image-service", url = "http://localhost:9090/image")
+//@FeignClient(value = "image-service", url = "http://localhost:9090/image")
+@FeignClient(name = "${feign.name}", path = "/image")
 public interface ImageRepConnector extends ARemoteService<ImageRep> {
 
     @PostMapping("/save")

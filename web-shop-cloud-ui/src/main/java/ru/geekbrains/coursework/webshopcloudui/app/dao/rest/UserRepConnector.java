@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.UserRep;
 
-@FeignClient(value = "user-service", url = "http://localhost:9090/user")
+//@FeignClient(value = "user-service", url = "http://localhost:9090/user")
+@FeignClient(name = "${feign.name}", path = "/user")
 public interface UserRepConnector extends ARemoteService<UserRep> {
 
     @PostMapping("/addNewUser")
