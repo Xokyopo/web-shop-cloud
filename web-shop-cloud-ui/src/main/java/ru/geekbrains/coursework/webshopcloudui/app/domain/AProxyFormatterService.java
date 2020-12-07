@@ -41,11 +41,6 @@ public abstract class AProxyFormatterService<E> implements Formatter<E>, ARemote
     }
 
     @Override
-    public String getEntityName() {
-        return this.connector.getEntityName();
-    }
-
-    @Override
     public Optional<E> getById(Long id) {
         return this.connector.getById(id);
     }

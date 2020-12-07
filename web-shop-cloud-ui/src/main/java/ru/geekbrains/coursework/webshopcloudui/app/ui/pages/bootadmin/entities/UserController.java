@@ -27,4 +27,9 @@ public class UserController extends AController<UserRep, ARemoteService<UserRep>
         model.addAttribute("allRoles", roleService.getAll());
         return super.show(model, id);
     }
+
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "user";
+    }
 }

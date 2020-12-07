@@ -8,4 +8,8 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.RoleRep;
 @Controller
 @RequestMapping("/admin/entities/role")
 public class RoleController extends AController<RoleRep, ARemoteService<RoleRep>> {
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "role";
+    }
 }

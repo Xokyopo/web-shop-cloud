@@ -11,9 +11,6 @@ public interface ARemoteService<E> {
     @GetMapping("/getAll")
     List<E> getAll();
 
-    @GetMapping("/getEntityName")
-    String getEntityName();
-
     @GetMapping("/getById/{id}")
     Optional<E> getById(@PathVariable("id") Long id);
 

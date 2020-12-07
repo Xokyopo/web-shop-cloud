@@ -32,4 +32,9 @@ public class ProductController extends AController<ProductRep, ARemoteService<Pr
         model.addAttribute("allCategories", categoryService.getAll());
         return super.show(model, id);
     }
+
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "product";
+    }
 }

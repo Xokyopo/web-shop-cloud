@@ -32,12 +32,6 @@ public abstract class ARemoteServiceController<P, S extends AService<?, P, ? ext
     }
 
     @Override
-    @GetMapping("/getEntityName")
-    public String getEntityName() {
-        return this.service.getEntityName();
-    }
-
-    @Override
     @GetMapping("/getById/{id}")
     public Optional<P> getById(@PathVariable("id") Long id) {
         return this.service.getById(id);

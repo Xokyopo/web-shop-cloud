@@ -35,4 +35,9 @@ public class ImageController extends AController<ImageRep, ImageRepConnector> {
     public String save(ImageRep entity) {
         throw new UnsupportedOperationException("method save(Image entity) not support use save(Image entity, Multipart)");
     }
+
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "image";
+    }
 }

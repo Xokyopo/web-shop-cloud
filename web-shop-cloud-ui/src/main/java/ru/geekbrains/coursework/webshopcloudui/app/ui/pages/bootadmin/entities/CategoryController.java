@@ -8,4 +8,8 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.CategoryRe
 @Controller
 @RequestMapping("/admin/entities/category")
 public class CategoryController extends AController<CategoryRep, ARemoteService<CategoryRep>> {
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "category";
+    }
 }
