@@ -20,7 +20,7 @@
 
                 <!-- content area start -->
 
-                <div th:with="rootDir='/admin/entities/imageRep'">
+                <div th:object="${image}" th:with="rootDir='/admin/entities/image'">
 
                     <div class="row justify-content-center">
                         <a class="btn btn-primary" style="margin-top: 50px" th:href="@{${rootDir}  + '/showAll'}"
@@ -28,16 +28,16 @@
                     </div>
 
                     <!--      imageRep preview          -->
-                    <div class="card mb-5" style="width: 18rem; height: 29rem" th:if="${imageRep.id != 0}">
-                        <img alt="..." class="card-img-top" th:src="@{${rootDir}  + '/get/{id}'(id = ${imageRep.id})}"/>
+                    <div class="card mb-5" style="width: 18rem; height: 29rem" th:if="*{id != 0}">
+                        <img alt="..." class="card-img-top" th:src="@{${rootDir}  + '/get/{id}'(id = *{id})}"/>
                         <div class="card-body">
-                            <h5 class="card-title" th:text="${imageRep.name}">Card title</h5>
+                            <h5 class="card-title" th:text="*{name}">Card title</h5>
                             <p class="card-text">
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" for="path">Path:</span>
                                 </div>
-                                <label class="form-control" id="path" th:text="${imageRep.path}"></label>
+                                <label class="form-control" id="path" th:text="*{path}"></label>
                             </div>
 
                             <div class="input-group input-group-sm mb-3">
@@ -45,14 +45,14 @@
                                     <span class="input-group-text" for="size">Size:</span>
                                 </div>
                                 <label class="form-control" id="size"
-                                       th:text="${imageRep.size}"></label>
+                                       th:text="*{size}"></label>
                             </div>
 
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" for="type">Media Type:</span>
                                 </div>
-                                <label class="form-control" id="type" th:text="${imageRep.type}"></label>
+                                <label class="form-control" id="type" th:text="*{type}"></label>
                             </div>
 
                             </p>
@@ -63,9 +63,9 @@
                     <!--      imageRep new loader      -->
                     <form action="#" enctype="multipart/form-data" method="post" th:action="@{${rootDir} + '/save'}">
 
-                        <input name="id" th:value="${imageRep.id}" type="hidden">
+                        <input name="id" th:value="*{id}" type="hidden">
 
-                        <input name="uploadList" th:multiple="${imageRep.id == 0}" type="file">
+                        <input name="uploadList" th:multiple="*{id == 0}" type="file">
 
                         <div class="row justify-content-end" style="margin: 0 5px">
                             <button class="btn btn-success" type="submit">Save</button>

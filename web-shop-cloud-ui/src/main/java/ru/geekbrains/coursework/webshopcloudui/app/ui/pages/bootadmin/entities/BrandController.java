@@ -8,4 +8,8 @@ import ru.geekbrains.coursework.webshopclouduirestdao.representations.BrandRep;
 @Controller
 @RequestMapping("/admin/entities/brand")
 public class BrandController extends AController<BrandRep, ARemoteService<BrandRep>> {
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "brand";
+    }
 }

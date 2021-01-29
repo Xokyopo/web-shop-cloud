@@ -1,7 +1,6 @@
 package ru.geekbrains.coursework.webshopcloudui.app.ui.pages;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +29,7 @@ public class ShopController {
 
     @GetMapping("/shop")
     public String show(Model model, @RequestParam("page") Optional<Integer> page) {
-        model.addAttribute("productsPages", this.productService.getAll(PageRequest.of(page.orElse(1) - 1, PRODUCT_LIMIT_ON_PAGE)));
+        model.addAttribute("productsPages", this.productService.getPage(page.orElse(1) - 1, PRODUCT_LIMIT_ON_PAGE));
         return "shop";
     }
 

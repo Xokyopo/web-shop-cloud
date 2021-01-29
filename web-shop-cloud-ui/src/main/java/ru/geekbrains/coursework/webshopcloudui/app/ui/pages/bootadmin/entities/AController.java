@@ -26,7 +26,7 @@ public abstract class AController<E, S extends ARemoteService<E>> {
                 .findFirst()
                 .orElse("");
         this.service = service;
-        this.entityName = service.getEntityName().toLowerCase();
+        this.entityName = this.getEntityNameByLoverCase();
         this.entitiesTablePath = rootPath + "-list";
         this.editFormPath = rootPath + "-edit-form";
     }
@@ -58,6 +58,8 @@ public abstract class AController<E, S extends ARemoteService<E>> {
     public S getService() {
         return service;
     }
+
+    public abstract String getEntityNameByLoverCase();
 
     protected String getRootPath() {
         return rootPath;

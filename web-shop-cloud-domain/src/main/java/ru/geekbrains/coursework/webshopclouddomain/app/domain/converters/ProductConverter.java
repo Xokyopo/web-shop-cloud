@@ -29,6 +29,6 @@ public class ProductConverter extends AConverterIml<Product, ProductRep> {
         result.setImagesUrls(entity.getImagesUrls());
         result.setBrand(brandConverter.toRepresentation(entity.getBrand()));
         result.setCategories(categoryConverter.toRepresentations(entity.getCategories()));
-        return null;
+        return result;
     }
 }

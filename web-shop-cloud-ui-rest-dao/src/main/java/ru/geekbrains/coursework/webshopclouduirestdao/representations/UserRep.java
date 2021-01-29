@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class UserRep extends ARepresentation{
     private String password;
-    private Set<RoleRep> roleReps;
+    private Set<RoleRep> roles;
 
     public String getPassword() {
         return this.password;
@@ -15,10 +15,10 @@ public class UserRep extends ARepresentation{
     }
 
     public Set<RoleRep> getRoles() {
-        return this.roleReps;
+        return this.roles;
     }
 
     public void setRoles(Set<RoleRep> roleReps) {
-        this.roleReps = roleReps;
+        this.roles = roleReps;
     }
 }

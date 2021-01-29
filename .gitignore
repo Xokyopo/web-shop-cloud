@@ -3,3 +3,6 @@
 /web-shop-cloud-domain/web-shop-cloud-domain.iml
 /web-shop-cloud-ui/web-shop-cloud-ui.iml
 /web-shop-cloud-ui-rest-dao/web-shop-cloud-ui-rest-dao.iml
+/web-shop-clod-eureka-server/web-shop-clod-eureka-server.iml
+**/target
+**/tmp

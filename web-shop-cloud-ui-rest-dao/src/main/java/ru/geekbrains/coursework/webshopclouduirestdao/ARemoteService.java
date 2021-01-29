@@ -1,22 +1,25 @@
 package ru.geekbrains.coursework.webshopclouduirestdao;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.coursework.webshopclouduirestdao.representations.MyPage;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ARemoteService<E> {
 
+    @GetMapping("/getAll")
     List<E> getAll();
 
-    String getEntityName();
+    @GetMapping("/getById/{id}")
+    Optional<E> getById(@PathVariable("id") Long id);
 
-    Optional<E> getById(Long id);
+    @DeleteMapping("/delete/{id}")
+    void delete(@PathVariable("id") Long id);
 
-    void delete(Long id);
+    @PostMapping("/save")
+    void save(@RequestParam("entity") E entity);
 
-    void save(E entity);
-
-    Page<E> getAll(PageRequest of);
+    @PostMapping("/getPage")
+    MyPage<E> getPage(@RequestParam("page") int page, @RequestParam("size") int size);
 }

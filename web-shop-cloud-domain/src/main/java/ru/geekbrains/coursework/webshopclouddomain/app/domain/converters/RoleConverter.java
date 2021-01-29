@@ -13,6 +13,6 @@ public class RoleConverter extends AConverterIml<Role, RoleRep> {
         result.setId(entity.getId());
         result.setName(entity.getName());
         result.setDescription(entity.getDescription());
-        return null;
+        return result;
     }
 }

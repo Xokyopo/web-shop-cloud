@@ -20,7 +20,7 @@
 
                 <!-- content area start -->
 
-                <div th:with="rootDir='/admin/entities/productRep'">
+                <div th:with="rootDir='/admin/entities/product'">
                     <div class="row justify-content-center" style="margin: 10px">
                         <a class="btn btn-success" th:href="@{${rootDir} + '/show/0'}" type="button">add</a>
                     </div>
@@ -38,10 +38,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="productRep : ${productReps}" th:with="entityID=${productRep.id}">
+                        <tr th:each="productRep : ${products}" th:with="entityID=${productRep.id}">
                             <th scope="row" th:text="${productRep.id}">id</th>
                             <td th:text="${productRep.name}">brandRep name</td>
-                            <td th:text="${productRep.brandRep?.name}">brandRep name</td>
+                            <td th:text="${productRep.brand?.name}">brandRep name</td>
                             <td th:text="${productRep.price}">productRep price</td>
                             <td>
                                 <p class="d-inline p-1 bg-primary text-white mb-0"

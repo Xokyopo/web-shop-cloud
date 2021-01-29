@@ -15,12 +15,7 @@ import java.util.Optional;
 @Repository
 public class HDDRepository {
     private static final String PROPERTY_NAME = "local.file.repository";
-    private static HDDRepository HDD_REPOSITORY;
     private Path rootDir;
-
-    public static HDDRepository getInstance() {
-        return HDD_REPOSITORY;
-    }
 
     @Autowired
     public void init(Environment environment) {
@@ -32,7 +27,6 @@ public class HDDRepository {
                 throw new UncheckedIOException(e);
             }
         }
-        HDD_REPOSITORY = this;
     }
 
     //may be add Nio ByteBuffer?

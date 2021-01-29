@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.geekbrains.coursework.webshopcloudui.app.domain.RoleRepProxyFormatterService;
 import ru.geekbrains.coursework.webshopclouduirestdao.ARemoteService;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.RoleRep;
 import ru.geekbrains.coursework.webshopclouduirestdao.representations.UserRep;
@@ -16,7 +17,7 @@ public class UserController extends AController<UserRep, ARemoteService<UserRep>
     private ARemoteService<RoleRep> roleService;
 
     @Autowired
-    public UserController(ARemoteService<RoleRep> roleService) {
+    public UserController(RoleRepProxyFormatterService roleService) {
         this.roleService = roleService;
     }
 
@@ -25,5 +26,10 @@ public class UserController extends AController<UserRep, ARemoteService<UserRep>
     public String show(Model model, @PathVariable("id") Long id) {
         model.addAttribute("allRoles", roleService.getAll());
         return super.show(model, id);
+    }
+
+    @Override
+    public String getEntityNameByLoverCase() {
+        return "user";
     }
 }
